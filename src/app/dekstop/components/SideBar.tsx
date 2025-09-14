@@ -152,13 +152,13 @@ export default function Sidebar() {
 
       </aside>
 
-      {/* Ícone de quando sidebar estiver fechada */}
+      {/* Ícone pra quando sidebar estiver fechada */}
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="absolute top-6 left-4 p-2 rounded-md hover:bg-gray-100 z-10"
+          className="absolute top-6 left-5 p-2 rounded-md z-10"
         >
-          <Menu size={24} className="text-teal-700" />
+          <Menu size={24} className="text-teal-600" />
         </button>
       )}
 

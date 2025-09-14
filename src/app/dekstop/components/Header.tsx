@@ -3,13 +3,13 @@ export default function Header() {
     <header className="flex items-center justify-between mb-6">
       <div className="flex items-center gap-4">
         {/* Search bar */}
-        <div className="relative">
+        <div className="flex justify-center items-center relative">
           <input
-            className="w-[420px] rounded-full border border-gray-200 px-4 py-2 pl-10 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            className="w-[420px] rounded-full border border-gray-200 px-4 py-2 pl-10 text-sm shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
             placeholder="Search something..."
           />
           <svg
-            className="w-4 h-4 absolute left-3 top-2.5 text-gray-400"
+            className="w-5 h-5 absolute left-4 top-2 text-gray-400"
             viewBox="0 0 24 24"
             fill="none"
           >
