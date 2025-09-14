@@ -1,25 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const cards = [
-  { id: 1, title: "Content designers", subtitle: "3 open" },
-  { id: 2, title: "PHP Developers", subtitle: "2 open" },
-  { id: 3, title: "UI/UX Designer", subtitle: "5 open" },
-  { id: 4, title: "iOS Developer", subtitle: "1 open" },
-  { id: 5, title: "Android Developer", subtitle: "4 open" },
-  { id: 6, title: "Backend Developer", subtitle: "2 open" },
-  { id: 7, title: "Android Developer", subtitle: "4 open" },
-  { id: 8, title: "Backend Developer", subtitle: "2 open" },
-  { id: 9, title: "Android Developer", subtitle: "4 open" },
-  { id: 10, title: "Backend Developer", subtitle: "2 open" },
-  { id: 11, title: "Android Developer", subtitle: "4 open" },
-  { id: 12, title: "Backend Developer", subtitle: "2 open" },
-  { id: 13, title: "Android Developer", subtitle: "4 open" },
-  { id: 14, title: "Backend Developer", subtitle: "2 open" },
-  { id: 15, title: "Android Developer", subtitle: "4 open" },
-  { id: 16, title: "Backend Developer", subtitle: "2 open" },
+  { id: 1, title: "Content designers", subtitle: "3 open", image: "https://i.pinimg.com/736x/23/50/47/235047224bc54f0f773b5c292de83de0.jpg" },
+  { id: 2, title: "PHP Developers", subtitle: "2 open", image: "https://i.pinimg.com/736x/ed/ea/99/edea99df82606eeb70af589e2e198169.jpg" },
+  { id: 3, title: "UI/UX Designer", subtitle: "5 open", image: "https://i.pinimg.com/1200x/17/6f/c2/176fc23f5418115658289ba07cd1d566.jpg" },
+  { id: 4, title: "iOS Developer", subtitle: "1 open", image: "https://i.pinimg.com/1200x/e2/c9/18/e2c918fddd4fc517665b3ce9c73bb5f6.jpg" },
+  { id: 5, title: "Android Developer", subtitle: "4 open", image: "https://i.pinimg.com/1200x/8a/c5/c7/8ac5c7add186209c1cb2e1c9492d631c.jpg" },
+  { id: 6, title: "Backend Developer", subtitle: "2 open", image: "https://i.pinimg.com/1200x/41/ff/0b/41ff0baa0b40ab90801a3844b0210554.jpg" },
 ];
 
 export default function HireCards() {
@@ -48,15 +38,12 @@ export default function HireCards() {
     }
   };
 
-  const visibleCards = cards.slice(
-    page * cardsPerPage,
-    page * cardsPerPage + cardsPerPage
-  );
+  const visibleCards = cards.slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage);
 
   return (
     <section className="mb-6">
-      <div className="flex items-center justify-between mb-3'">
-        <h3 className="text-lg font-medium">You Need to hire</h3>
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="text-lg font-medium">You Need to Hire</h3>
         <div className="flex items-center gap-2">
           {page > 0 && (
             <button 
@@ -86,8 +73,8 @@ export default function HireCards() {
               animating ? "-translate-x-4 opacity-0" : "translate-x-0 opacity-100"
             }`}
           >
-            <div className="w-9 h-9 rounded-md bg-indigo-50 flex items-center justify-center text-indigo-600 font-semibold">
-              {c.title.charAt(0)}
+            <div className="w-9 h-9 rounded-md overflow-hidden flex items-center justify-center bg-indigo-50">
+              <img src={c.image} alt={c.title} className="w-full h-full object-cover" />
             </div>
             <div className="text-sm font-medium">{c.title}</div>
             <div className="text-xs text-gray-400">{c.subtitle}</div>
