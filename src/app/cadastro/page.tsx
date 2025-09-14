@@ -1,4 +1,4 @@
-import PhoneCard from "../components/PhoneCard";
+import PhoneCard from "../dekstop/components/PhoneCard";
 
 export default function HomePage() {
   return (
