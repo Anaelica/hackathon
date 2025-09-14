@@ -14,6 +14,12 @@ const cards = [
   { id: 8, title: "Backend Developer", subtitle: "2 open" },
   { id: 9, title: "Android Developer", subtitle: "4 open" },
   { id: 10, title: "Backend Developer", subtitle: "2 open" },
+  { id: 11, title: "Android Developer", subtitle: "4 open" },
+  { id: 12, title: "Backend Developer", subtitle: "2 open" },
+  { id: 13, title: "Android Developer", subtitle: "4 open" },
+  { id: 14, title: "Backend Developer", subtitle: "2 open" },
+  { id: 15, title: "Android Developer", subtitle: "4 open" },
+  { id: 16, title: "Backend Developer", subtitle: "2 open" },
 ];
 
 export default function HireCards() {
@@ -49,11 +55,11 @@ export default function HireCards() {
 
   return (
     <section className="mb-6">
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-3'">
         <h3 className="text-lg font-medium">You Need to hire</h3>
         <div className="flex items-center gap-2">
           {page > 0 && (
-            <button
+            <button 
               onClick={handlePrev}
               className="bg-white shadow-md p-2 rounded-full hover:bg-gray-100"
             >
@@ -64,7 +70,7 @@ export default function HireCards() {
           {page < totalPages - 1 && (
             <button
               onClick={handleNext}
-              className="bg-white shadow-md p-2 rounded-full hover:bg-gray-100"
+              className="bg-white shadow-md p-2 rounded-full cursor-pointer hover:bg-gray-100"
             >
               <ChevronRight className="w-5 h-5 text-gray-600" />
             </button>
@@ -72,7 +78,7 @@ export default function HireCards() {
         </div>
       </div>
 
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-5 cursor-pointer gap-4">
         {visibleCards.map((c) => (
           <div
             key={c.id}
