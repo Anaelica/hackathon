@@ -10,7 +10,7 @@ import Rightbar from "@/app/dekstop/components/Rightbar";
 export default function HomePage() {
   return (
     <div className="bg-[#e9e7ff] flex items-center justify-center text-gray-700">
-      <div className="w-full rounded-2xl shadow-2xl bg-white/90 backdrop-blur-lg overflow-hidden flex">
+      <div className="w-full rounded-2xl shadow-2xl bg-white/70 backdrop-blur-lg overflow-hidden flex">
         {/* Sidebar */}
         <Sidebar />
 
