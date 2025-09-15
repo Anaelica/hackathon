@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const cards = [
@@ -15,6 +15,8 @@ const cards = [
 export default function HireCards() {
   const [page, setPage] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const [clicks, setClicks] = useState<{ [key: number]: number }>({});
+
   const cardsPerPage = 5;
   const totalPages = Math.ceil(cards.length / cardsPerPage);
 
@@ -38,7 +40,25 @@ export default function HireCards() {
     }
   };
 
-  const visibleCards = cards.slice(page * cardsPerPage, page * cardsPerPage + cardsPerPage);
+  const handleClick = async (id: number) => {
+    const res = await fetch(`/api/card/${id}`, { method: "POST" });
+    const data = await res.json();
+    setClicks((prev) => ({ ...prev, [id]: data.count }));
+  };
+
+  const visibleCards = cards.slice(
+    page * cardsPerPage,
+    page * cardsPerPage + cardsPerPage
+  );
+
+  // Carregar acessos iniciais de todos os cards visíveis
+  useEffect(() => {
+    visibleCards.forEach(async (c) => {
+      const res = await fetch(`/api/card/${c.id}`);
+      const data = await res.json();
+      setClicks((prev) => ({ ...prev, [c.id]: data.count }));
+    });
+  }, [page]);
 
   return (
     <section className="mb-6">
@@ -46,7 +66,7 @@ export default function HireCards() {
         <h3 className="text-lg font-medium">You Need to Hire</h3>
         <div className="flex items-center gap-2">
           {page > 0 && (
-            <button 
+            <button
               onClick={handlePrev}
               className="bg-white shadow-md p-2 rounded-full hover:bg-gray-100"
             >
@@ -69,15 +89,25 @@ export default function HireCards() {
         {visibleCards.map((c) => (
           <div
             key={c.id}
+            onClick={() => handleClick(c.id)}
             className={`bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex flex-col items-start gap-2 transform transition-all duration-300 ${
-              animating ? "-translate-x-4 opacity-0" : "translate-x-0 opacity-100"
+              animating
+                ? "-translate-x-4 opacity-0"
+                : "translate-x-0 opacity-100"
             }`}
           >
             <div className="w-9 h-9 rounded-md overflow-hidden flex items-center justify-center bg-indigo-50">
-              <img src={c.image} alt={c.title} className="w-full h-full object-cover" />
+              <img
+                src={c.image}
+                alt={c.title}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="text-sm font-medium">{c.title}</div>
             <div className="text-xs text-gray-400">{c.subtitle}</div>
+            <div className="text-xs text-gray-400 mt-auto">
+              {clicks[c.id] ? `${clicks[c.id]} acessos` : "0 acessos"}
+            </div>
           </div>
         ))}
       </div>
