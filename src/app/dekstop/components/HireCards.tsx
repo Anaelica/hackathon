@@ -101,11 +101,15 @@ export default function HireCards() {
             }`}
           >
             <div className="w-9 h-9 rounded-md overflow-hidden flex items-center justify-center bg-indigo-50">
-              <Image
-                src={c.image}
-                alt={c.title}
-                className="w-full h-full hover: object-cover"
-              />
+            <div className="w-9 h-9 rounded-md overflow-hidden relative bg-indigo-50">
+  <Image
+    src={c.image}
+    alt={c.title}
+    fill
+    className="object-cover"
+  />
+</div>
+
             </div>
             <div className="text-sm font-medium">{c.title}</div>
             <div className="text-xs text-gray-400">{c.subtitle}</div>

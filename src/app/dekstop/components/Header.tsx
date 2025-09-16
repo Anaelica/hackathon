@@ -37,11 +37,14 @@ export default function Header() {
           <div className="text-sm font-medium">Sara Abraham</div>
           <div className="text-xs text-gray-400">View profile</div>
         </div>
-        <Image
-          src="https://i.pravatar.cc/40?img=32"
-          alt="avatar"
-          className="w-10 h-10 rounded-full"
-        />
+<Image
+  src="https://i.pravatar.cc/40?img=32"
+  alt="avatar"
+  width={40}      
+  height={40}      
+  className="rounded-full"
+/>
+
       </div>
     </header>
   );

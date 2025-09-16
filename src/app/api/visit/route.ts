@@ -6,12 +6,14 @@ const redis = new Redis(process.env.UPSTASH_REDIS_URL!, {
   tls: { rejectUnauthorized: false },
 });
 
-export async function GET() {
+async function handleClick(cardId: string) {
   try {
-    // incrementa contador
-    const count = await redis.incr("visits");
-    return NextResponse.json({ count });
+    const res = await fetch(`/api/cards/${cardId}`, { method: "POST" });
+    if (!res.ok) throw new Error("Falha na requisição");
+
+    const data = await res.json();
+    console.log(`Card ${data.id} clicado ${data.count} vezes`);
   } catch (err) {
-    return NextResponse.json({ error: "Redis error" }, { status: 500 });
+    console.error(err);
   }
 }
