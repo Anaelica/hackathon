@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const applicants = [
   "Mike Tyson",
   "Zara Thomas",
@@ -34,10 +36,14 @@ export default function Rightbar() {
         <ul className="mt-3 space-y-3">
           {applicants.map((a, i) => (
             <li key={i} className="flex items-center gap-3">
-              <img
+              <Image
                 src={`https://i.pravatar.cc/32?img=${i + 10}`}
-                className="w-8 h-8 rounded-full"
+                alt={`Avatar ${i + 10}`}
+                width={32}
+                height={32}
+                className="rounded-full"
               />
+
               <div className="flex-1 text-sm">{a}</div>
               <div className="text-xs text-gray-400">2m</div>
             </li>

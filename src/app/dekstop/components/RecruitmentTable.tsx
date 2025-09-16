@@ -10,7 +10,7 @@ export default function RecruitmentTable() {
     <section className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
       <div className="flex items-center justify-between mb-4">
         <h4 className="font-medium">Recruitment Progress</h4>
-        <button className="text-sm text-indigo-600">View All</button>
+        <button className="text-sm text-indigo-600  cursor-pointer">View All</button>
       </div>
 
       <div className="overflow-x-auto">

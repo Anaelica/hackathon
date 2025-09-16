@@ -2,6 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Contador from "@/app/visit/page";
+import Modal from "./Modal";
+import Image from "next/image";
+
 
 const cards = [
   { id: 1, title: "Content designers", subtitle: "3 open", image: "https://i.pinimg.com/736x/23/50/47/235047224bc54f0f773b5c292de83de0.jpg" },
@@ -73,7 +77,7 @@ export default function HireCards() {
               <ChevronLeft className="w-5 h-5 text-gray-600" />
             </button>
           )}
-          <button className="text-sm text-indigo-600">View All</button>
+          <button className="text-sm text-indigo-600 cursor-pointer">View All</button>
           {page < totalPages - 1 && (
             <button
               onClick={handleNext}
@@ -97,17 +101,15 @@ export default function HireCards() {
             }`}
           >
             <div className="w-9 h-9 rounded-md overflow-hidden flex items-center justify-center bg-indigo-50">
-              <img
+              <Image
                 src={c.image}
                 alt={c.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full hover: object-cover"
               />
             </div>
             <div className="text-sm font-medium">{c.title}</div>
             <div className="text-xs text-gray-400">{c.subtitle}</div>
-            <div className="text-xs text-gray-400 mt-auto">
-              {clicks[c.id] ? `${clicks[c.id]} acessos` : "0 acessos"}
-            </div>
+              {/* <Contador /> */}
           </div>
         ))}
       </div>

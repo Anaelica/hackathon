@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Header() {
   return (
     <header className="flex items-center justify-between mb-6">
@@ -35,7 +37,7 @@ export default function Header() {
           <div className="text-sm font-medium">Sara Abraham</div>
           <div className="text-xs text-gray-400">View profile</div>
         </div>
-        <img
+        <Image
           src="https://i.pravatar.cc/40?img=32"
           alt="avatar"
           className="w-10 h-10 rounded-full"
